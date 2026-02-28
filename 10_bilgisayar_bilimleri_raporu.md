@@ -1,4 +1,4 @@
-l# 📑 Kapsamlı Teknik Rapor: Bellek Mimarisi ve Yazılım Optimizasyonu
+l#  Kapsamlı Teknik Rapor: Bellek Mimarisi ve Yazılım Optimizasyonu
 
 **Hazırlayan:** Yavuz Selim Karakülah  
 **Öğrenci No:** 232511043  
@@ -78,5 +78,3 @@ Yüksek performanslı bir kod yazmak için bellek farkındalığı şarttır:
 * **Büyük Nesne Yönetimi (LOH):** Çok büyük nesnelerin (85KB üzeri) Heap'te özel bir alana (Large Object Heap) alındığını ve buranın çok zor temizlendiğini unutmayın.
 * **Tanılama:** Geliştirme sürecinde düzenli olarak "Memory Profiler" araçlarıyla bellek dökümü (Snapshot) alarak artışları gözlemleyin.
 
----
-*Bu teknik döküman, bellek yönetimi prensiplerinin teorik çerçevesini oluşturmak üzere hazırlanmıştır.*
