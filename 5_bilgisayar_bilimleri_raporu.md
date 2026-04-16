@@ -1,46 +1,47 @@
-🏛️ Teknik Rapor: Linux Temelleri ve İşletim Sistemi Yönetimi
-Hazırlayan: Yavuz Selim Karakülah
-Öğrenci No: 232511043
-Konu: Terminal Komutları, Paket Yönetimi, Dosya İzinleri ve Servis Yönetimi
-Kategori: Temel Seviye Sistem Yönetimi / Yazılım Altyapısı
+## 1. TERMİNAL VE KABUK (SHELL) HAKİMİYETİ
+Linux terminali, kullanıcı ile çekirdek (kernel) arasındaki köprüdür.
 
-## 1. TERMİNAL KOMUTLARI (TEMEL NAVİGASYON VE ANALİZ)
-Linux ekosisteminde terminal, sistemle doğrudan iletişim kurmanın en güçlü yoludur.
+### 1.1. Gelişmiş Navigasyon ve Dosya İşlemleri
+ls -la: Gizli dosyalar dahil tüm dosyaları izinleri ve sahipleriyle birlikte listeler.
 
-### 1.1. Dosya ve Dizin Yönetimi
-ls (List): Bulunulan dizindeki dosya ve klasörleri listeler.
+cd .. / cd ~: Bir üst dizine veya kullanıcının ana dizinine hızlı geçiş sağlar.
 
-cd (Change Directory): Dizinler arasında geçiş yapmayı sağlar.
+grep -r "terim": Belirtilen bir dizindeki tüm dosyaların içinde "terim" kelimesini arar; debug işlemleri için hayati önem taşır.
 
-mkdir (Make Directory): Yeni bir klasör/dizin oluşturur.
+### 1.2. Sistem Gözlemleme
+top / htop: İşlemciyi en çok yoran işlemleri (PID) gösterir. Hangi uygulamanın "zombi" sürece dönüştüğünü buradan görebilirsiniz.
 
-### 1.2. Metin İşleme ve Sistem İzleme
-grep (Global Regular Expression Print): Dosyalar veya çıktılar içerisinde belirli bir metin kalıbını aramaya yarar.
+## 2. PAKET YÖNETİM SİSTEMLERİNİN İŞLEYİŞİ
+Paket yöneticileri, bağımlılıkları (dependencies) otomatik olarak çözer.
 
-top (Table of Processes): Sistem kaynaklarının (CPU, RAM) kullanımını ve çalışan işlemleri anlık olarak görüntüler.
+APT (Debian/Ubuntu): sudo apt update && sudo apt upgrade komutuyla tüm sistemi tek seferde güncelleyebilir.
 
-## 2. PAKET YÖNETİMİ (YAZILIM KURULUMU)
-Linux dağıtımları, yazılımları yönetmek için merkezi depolar ve paket yöneticileri kullanır.
+Pacman (Arch): sudo pacman -Syu ile rolling-release güncelleme yapar.
 
-APT (Advanced Package Tool): Debian ve Ubuntu tabanlı sistemlerde kullanılır (apt install).
+DNF (Fedora): Modern mimarisiyle işlem geçmişini tutar ve hata durumunda "undo" (geri alma) imkanı sunar.
 
-PACMAN: Arch Linux tabanlı sistemlerin hızlı paket yöneticisidir.
+## 3. DOSYA İZİNLERİ: OKUMA, YAZMA VE ÇALIŞTIRMA
+Linux'ta her dosyanın üç grup için izni vardır: Owner (Sahip), Group (Grup) ve Others (Diğerleri).
 
-DNF (Dandified YUM): Fedora, RHEL ve CentOS sistemlerinde kullanılan modern paket yöneticisidir.
+### 3.1. Sayısal (Octal) İzin Mantığı
+4 (Read), 2 (Write), 1 (Execute):
 
-## 3. DOSYA İZİNLERİ VE GÜVENLİK
-Linux çok kullanıcılı bir sistem olduğu için dosya erişim yetkileri kritiktir.
+7 (4+2+1): Tam yetki.
 
-### 3.1. chmod (Change Mode)
-Dosyaların okuma (r), yazma (w) ve çalıştırma (x) izinlerini değiştirmek için kullanılır.
+5 (4+0+1): Okuma ve Çalıştırma.
 
-Örnek: chmod +x script.sh komutu dosyayı çalıştırılabilir hale getirir.
+chmod 755: Sahibe her yetkiyi, diğerlerine sadece okuma ve çalıştırma yetkisi verir. Güvenli web sunucuları için standarttır.
 
-## 4. SERVİS YÖNETİMİ (SYSTEMCTL)
-Modern Linux dağıtımlarında arka plan hizmetlerini (servisleri) yönetmek için systemd birimi kullanılır.
+## 4. SERVİS VE DAEMON YÖNETİMİ (SYSTEMD)
+Modern Linux'un kalbi systemd birimidir.
 
-systemctl start/stop: Bir servisi başlatır veya durdurur.
+systemctl enable [servis]: Servisin boot (açılış) sırasında otomatik başlamasını sağlar.
 
-systemctl status: Servisin o anki çalışma durumunu raporlar.
+systemctl status: Servisin loglarını (çıktılarını) anlık olarak görmenizi sağlar; hata tespiti (troubleshooting) için ilk başvurulan yerdir.
 
-systemctl enable: Servisin bilgisayar açıldığında otomatik olarak başlamasını sağlar.
+journalctl -u [servis]: Servise ait geçmiş tüm log kayıtlarını incelemenize olanak tanır.
+
+💡 Kazanç: Yazılımcı İçin Stratejik Avantaj
+Networking bilgisi size verinin yolculuğunu, Linux bilgisi ise verinin işlendiği ortamı öğretir. Bu iki raporu birleştirdiğinizde, sadece kod yazan değil, yazdığı kodu ölçekleyebilen ve sorunlarını temelinden çözebilen bir mühendislik vizyonu kazanırsınız.
+
+Yavuz, bu raporlar artık çok daha detaylı oldu. İleride bu raporları Docker Konteynırları veya Bash Scripting ile genişletmemi ister misin?

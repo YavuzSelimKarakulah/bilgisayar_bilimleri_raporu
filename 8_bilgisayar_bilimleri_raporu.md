@@ -62,30 +62,3 @@ Performans Etkisi
 Avantajı: Okuma (SELECT) işlemlerini inanılmaz hızlandırır.
 
 Dezavantajı: Veri ekleme (INSERT) veya güncelleme (UPDATE) sırasında indeksin de güncellenmesi gerektiği için bu işlemleri biraz yavaşlatabilir.
-
-## 4. BASİT BİR ENDPOINT TASARIMI
-Bir API tasarımı yapılırken URL'lerin (endpoint) temiz, anlaşılır ve hiyerarşik olması gerekir.
-
-### 4.1. Endpoint Standartları
-İyi bir endpoint tasarımı eylem (fiil) yerine nesne (isim) kullanır:
-
-Yanlış: /kitaplariGetir
-
-Doğru: GET /kitaplar
-
-### 4.2. Kütüphane Sistemi Örneği
-Metot,Endpoint,İşlem
-GET,/kitaplar,Tüm kitap listesini döndürür.
-GET,/kitaplar/12,12 ID numaralı kitabın detayını verir.
-POST,/kitaplar,Sisteme yeni bir kitap verisi ekler.
-DELETE,/kitaplar/12,İlgili kitabı kütüphaneden siler.
-
-## 5. API GÜVENLİĞİ VE YETKİLENDİRME
-API'ler her zaman dışarıya tamamen açık olmaz; veri güvenliğini sağlamak için şu yöntemler kullanılır:
-
-API Key: Uygulamaya özel verilen bir anahtar kodudur.
-
-OAuth2 / JWT: Kullanıcı giriş yaptıktan sonra verilen geçici dijital jetonlardır (Token).
-
-💡 Kazanç: Backend Dünyasına Giriş
-API mantığını kavramak, sizi sadece bir "kod yazarı" olmaktan çıkarıp, sistemlerin nasıl entegre edileceğini bilen bir "yazılım mimarı" yoluna sokar. Frontend ile Backend arasındaki veri trafiğini yönetmek, profesyonel yazılım dünyasının en kritik becerisidir.
